@@ -4,26 +4,30 @@
 
 using namespace std;
 
-int partition(int* arr, int first, int last) {
+void swap(int &a, int &b) {
+   int temp = a;
+   a = b;
+   b = temp;
+}
+
+int partition(int* arr, int first, int last, int pivot_index) {
+  swap(arr[pivot_index], arr[last]);
   int pivot = arr[last];
   int i = first - 1;
   for (int j = first; j <= last - 1; j++) {
     if (arr[j] <= pivot) {
       ++i;
-      int temp = arr[i];
-      arr[i] = arr[j];
-      arr[j] = temp;
+      swap(arr[i], arr[j]);
     }
   }
-  int temp = arr[i+1];
-  arr[i+1] = arr[last];
-  arr[last] = temp;
+  swap(arr[i+1], arr[last]);
   return i + 1;
 }
 
 void quick_sort(int* arr, int first, int last) {
     if (first < last) {
-      int mid = partition(arr, first, last);
+      int rand_index = (rand() % (last - first)) + first;
+      int mid = partition(arr, first, last, rand_index);
       quick_sort(arr, first, mid - 1);
       quick_sort(arr, mid + 1, last);
     }
