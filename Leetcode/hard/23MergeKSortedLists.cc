@@ -1,3 +1,8 @@
+#include <iostream>
+#include <queue>
+
+using namespace std;
+
 /*
 You are given an array of k linked-lists lists, each linked-list is sorted in
 ascending order.
@@ -51,6 +56,19 @@ The sum of lists[i].length won't exceed 10^4.
 class Solution {
 public:
     ListNode* mergeKLists(vector<ListNode*>& lists) {
+      priority_queue<ListNode> merge_queue;
+      ListNode* final = new ListNode();
+      ListNode* current = final;
 
+      for (const auto& node: lists) {
+        merge_queue.push(node);
+      }
+
+      while (!merge_queue.empty()) {
+        ListNode*
+      }
+
+
+      return final -> next;
     }
 };
